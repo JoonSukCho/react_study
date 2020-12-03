@@ -1,20 +1,99 @@
 
-Snippet
+// Snippet
     rcc - class 형태의 컴포넌트 템플릿
     rsc - 함수형 컴포넌트 템플릿
 
-const [상태 값 저장 변수, 상태 값 변경 함수] = useState(상태 초기 값);
 
-spa와 ajax의 차이점
+// const [상태 값 저장 변수, 상태 값 변경 함수] = useState(상태 초기 값);
+
+
+// spa와 ajax의 차이점
     개념은 다르나, 겉보기엔 같아보일수도 있어서 메모함.
     spa에서는 다른 화면을 라우팅이라는 개념으로 구성한다.
     ajax로 화면을 구성하게 되면 뒤로 돌아가기를 구성할 수 없다.
     spa는 라우팅이라는 개념으로 뒤로가기를 구성할 수 있다.
+    spa는 서버사이드 렌더링이 아님. 서버사이드에서는 json data만 받아온다.
 
-js Function
+
+// js(es6) Function
     map - 배열을 iterate 
     concat - 배열에 data 추가 하는 함수? (es5의 push와 비슷)
     filter - 조건에 맞는 data를 제거
+    ...(three dots) - const array = [1, 2, 3, 4, 5];
+                    - const [c, d, ...arrayRest] = array;
+                    - arrayRest === [3, 4, 5]
 
 
- 
+// 클래스형 컴포넌트와 함수형 컴포넌트의 차이
+    클래스형 컴포넌트
+        - 현재 자주 사용하지 않는 편.
+        - state, lifeCycle 관련 기능 사용 가능함.
+        - 함수형 컴포넌트보다 메모리 자원을 더 사용함
+
+    함수형 컴포넌트
+        - state, lifeCycle 관련 기능 사용 불가능. (Hook으로 대체)
+        - 컴포넌트 선언이 편하다.
+
+
+// life Cycle
+마운트
+    - DOM이 생성되고 브라우저에 나타나는 것
+    constructor
+        - 컴포넌트를 새로 만들때마다 호출되는 클래스 생성자 메서드
+    getDerivedStateFromProps
+        - props에 있는 값을 state에 넣을 때 사용하는 메서드
+    render
+        - UI를 렌더링하는 메서드
+    componentDidMount
+        - 컴포넌트가 브라우저에 나타난 후 호출하는 메서드
+
+업데이트
+    - props가 바뀔 때,
+      state가 바뀔 때,
+      부모 컴포넌트가 리렌더링 될 때,
+      this.forceUpdate로 강제로 렌더링을 트리거 할 때,
+    getDerivedStateFromProps
+        - props에 있는 값을 state에 넣을 때 사용하는 메서드
+    shouldComponentUpdate
+        - 컴포넌트가 리렌더링을 할지 말지 결정하는 메서드?
+    render
+        - 컴포넌트 리렌더링
+    getSnapshotBeforeUpdate
+        - 컴포넌트 변화를 DOM에 반영하기 바로 직전에 호출하는 메서드
+    componentDidUpdate
+        - 컴포넌트 업데이트 끝난 후 호출하는 메서드
+
+언마운트
+    - 마운트의 반대 과정. 컴포넌트를 DOM에서 제거하는 과정.
+    componentWillUnmount
+        - 컴포넌트가 브라우저에서 사라지기 전에 호출하는 메서드
+
+
+// life Cycle 순서
+    Render
+        componentWillMount() -> render() -> componentDidMount()
+    Update
+        componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate()
+        -> render() -> componentDidMount()
+
+
+// Hooks
+    useState
+        - state 선언 및 state 값 변경
+        - [state 값, state 설정하는 함수] 반환
+    useEffect
+        - 컴포넌트가 렌더링될 때마다 특정 작업을 수행
+        - componentDidMount + componentDidUpdate 
+    useReducer
+        - 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 update 해주고 싶을 때
+        - 추후 redux 공부할 때 remind
+        - 아직 이해x
+    useMemo
+        - 컴포넌트 내부에서 발생하는 연산을 최적화할 수 있음.
+        - 아직 이해x
+    useCallback
+        - 이벤트 핸들러 함수를 필요할 때만 생성할 수 있음.
+    useRef
+        - ref를 쉽게 사용할 수 있도록 해줌.
+    custom Hooks
+        - 컴포넌트 로직을 '재사용 가능한 함수' 로 만듦.
