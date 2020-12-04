@@ -40,6 +40,17 @@
     }
   }
 
+  .modify {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: blue;
+    cursor: pointer;
+    &:hover {
+      color: aqua;
+    }
+  }
+
   // 엘리먼트 사이사이에 테두리를 넣어줌
   & + & {
     border-top: 1px solid #dee2e6;
