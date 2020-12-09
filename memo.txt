@@ -113,6 +113,12 @@
     parameter - 1. reducer, 2. 초깃값
 
 
+// useAsync
+    ex) const [state, refetch] = useAsync(getData, []);
+    return 값 = 1. 
+    parameter - 1. API요청을 시작하는 함수, 2. deps
+
+
 // CSS Module
     - CSSModule.module.css 와 같은 CSS Module을 이용하면
     클래스 이름을 지을 때 고유성에 대해 고민하지 않아도 됨.
