@@ -8,22 +8,22 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
 // Redux Import
-import { createStore } from "redux";
-import { Provider } from "react-redux";
+// import { createStore } from "redux";
+// import { Provider } from "react-redux";
 
-import board_reducer from "./App_reducer";
+// import board_reducer from "./App_reducer";
 
-let store = createStore(
-  board_reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// let store = createStore(
+//   board_reducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  // <Provider store={store}>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  // </Provider>
   document.getElementById("root")
 );
 

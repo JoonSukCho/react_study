@@ -26,6 +26,7 @@ const Home = () => {
     deferFn: getData,
   });
   const [state, dispatch] = useReducer(reducer, { keys: 0, value: "" });
+  const [inputState, setInputState] = useState("");
 
   const handleClickSave = (e) => {
     console.log(datas);
@@ -39,13 +40,22 @@ const Home = () => {
     dispatch({ type: "CLEAR" });
   };
 
+  const onChange = (e) => {
+    setInputState(e.target.value);
+  };
+
   return (
     <div style={{ padding: "20px" }}>
       <h1>Home</h1>
-      <input placeholder="Get API Data"></input>
+      <input
+        placeholder="Get API Data"
+        onChange={onChange}
+        value={inputState}
+      ></input>
       <button
         onClick={() => {
           run();
+          console.log(datas);
           console.log(state);
         }}
         style={{ marginLeft: "10px" }}
