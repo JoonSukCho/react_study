@@ -1,4 +1,11 @@
 
+// npm, yarn (Package Manager)
+    - npx create-react-app
+    - npm install ~
+    - yarn create react-app
+    - yarn add ~
+
+
 // Snippet
     rcc - class 형태의 컴포넌트 템플릿
     rsc - 함수형 컴포넌트 템플릿
@@ -31,6 +38,9 @@
     const {a, b} = object;
     console.log(a); // 1
     console.log(b); // 2
+
+    * Promise와 async, await의 차이
+    
 
 // 클래스형 컴포넌트와 함수형 컴포넌트의 차이
     클래스형 컴포넌트
@@ -219,6 +229,28 @@
     - useSelector 최적화
         - useSelector로 객체를 반환하지 않고 여러번 사용한다.
         - 혹은 useSelector의 두번째 인자로 shallowEqual 함수를 넘겨준다.
+
+
+// Redux Middleware (리덕스 미들웨어)
+    - 액션이 디스패치 된 다음, 리듀서가 해당 액션을 받아 state를 업데이트 하기 전에
+    추가적인 작업이 가능하다.
+    - '액션' -> '미들웨어' -> '리듀서' -> '스토어'
+    
+    - const middleware = store => next => action => {
+
+    }
+    = function middleware(store) { // store = store instance
+        return function(next) { // 액션을 다음 미들웨어로 전달
+            return function (aciton) { // 현재 처리하고 있는 action 객체
+                anything()...
+            }
+        }
+    }
+
+    - redux-thunk
+        - 리덕스에서 비동기 작업을 처리 할 때 가장 많이 사용하는 미들웨어.
+        - 이것을 사용하면 액션 객체가 아닌 함수를 dispatch 할 수 있다.
+
 
 
 // HOC (Higher-Order Component)
