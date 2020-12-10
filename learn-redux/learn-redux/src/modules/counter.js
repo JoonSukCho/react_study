@@ -1,5 +1,5 @@
 // 액션 타입 만들기
-
+// 액션의 이름에 접두사를 추가해서 다른 모듈과 이름 중복 방지
 const SET_DIFF = "counter/SET_DIFF";
 const INCREASE = "counter/INCREASE";
 const DECREASE = "counter/DECREASE";

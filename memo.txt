@@ -19,7 +19,7 @@
     map - 배열을 iterate 
     concat - 배열에 data 추가 하는 함수? (es5의 push와 비슷)
     filter - 조건에 맞는 data를 제거
-    ...(three dots) - const array = [1, 2, 3, 4, 5];
+    ...(Spread 표현식) - const array = [1, 2, 3, 4, 5];
                     - const [c, d, ...arrayRest] = array;
                     - arrayRest === [3, 4, 5]
     function foo(r = 1) {
@@ -119,6 +119,10 @@
     parameter - 1. API요청을 시작하는 함수, 2. deps
 
 
+// Link
+    'to' props에 해당하는 Route로 화면을 Routing 함.
+
+
 // CSS Module
     - CSSModule.module.css 와 같은 CSS Module을 이용하면
     클래스 이름을 지을 때 고유성에 대해 고민하지 않아도 됨.
@@ -159,15 +163,64 @@
     - 'Switch'는 여러 Route 들을 감싸서 그 중 규칙이 일치하는 라우트 단 하나만을
     렌더링 시켜줌. 
 
-// 리덕스
-    - 리덕스란?
+// Redux (리덕스)
+    - Redux란?
         - 리액트에서 가장 많이 쓰이는 상태관리 라이브러리.
         - 컴포넌트들의 상태 관련 로직들을 다른 파일로 분리시켜서 더욱 효율적으로 관리.
-    - 리덕스 규칙
+
+    - Redux 규칙
         1. 하나의 어플리케이션 안에는 하나의 스토어가 있다.
         2. 상태는 읽기 전용이다.
         3. 변화를 일으키는 함수, 리듀서는 순수한 함수여야 합니다.
-        
+    
+    - Reducer (리듀서)
+        - 변화를 일으키는 함수
+        - state, action을 파라미터로 받아 새로운 상태를 반환한다.
+    
+    - Store (스토어)
+        - 리덕스에서는 한 어플리케이션당 하나의 스토어 존재
+        - 현재의 앱 상태, 리듀서, 내장함수 등
+    
+    - Dispatch (디스패치)
+        - 액션을 발생 시키는 스토어의 내장 함수.
 
-// 디스패치 (dispatch)
-    - 액션을 발생 시키는 스토어의 내장 함수.
+    - Subscribe (구독)        
+        - 함수를 파라미터로 받아서 액션이 dispatch 될 때 마다 파라미터의 함수가 호출됨.
+
+    - Ducks 패턴
+        - action과 reducer를 각 파일로 나누지 않고 하나의 파일에 작성하는 패턴
+
+    - 루트 리듀서
+        - 리덕스 모듈 하나당 하나의 리듀서를 만들어야 하는데,
+        여러개의 리듀서를 하나의 리듀서로 합쳐서 사용함.
+        합쳐진 리듀서를 부르는 말.
+
+    - Provider
+        - react-redux의 Provider 컴포넌트로 감싸주면
+        어디서든 리덕스 스토어에 접근 가능.
+
+    - useSelector
+        - 리덕스 스토어의 상태를 조회하는 Hook.
+
+    - useDispatch
+        - 리덕스 스토어의 dispatch를 함수에서 사용 할 수 있게 해주는 Hook?
+        - ex) const dispatch = useDispatch();
+        -     <button onClick=(()=>dispatch({type: 'ACTION'}))
+
+    - React.memo
+        - React는 먼저 컴포넌트를 렌더링 한 뒤, 이전 렌더된 결과와 비교하여
+        DOM 업데이트를 결정한다. 만약 비교 결과가 다르면 DOM을 업데이트 한다.
+        React.memo로 컴포넌트를 감싸면, 컴포넌트 렌더링 후 결과를 메모이징한다.
+        그 다음 렌더링이 일어날 때 props가 같다면, 메모이징 된 내용을 재사용한다.
+        - 언제 사용하는지?
+            - 같은 props로 렌더링이 자주 일어나는 컴포넌트.
+            - 위와 같은 상황이 아니면 사용하지 않는 것이 좋다.
+        
+    - useSelector 최적화
+        - useSelector로 객체를 반환하지 않고 여러번 사용한다.
+        - 혹은 useSelector의 두번째 인자로 shallowEqual 함수를 넘겨준다.
+
+
+// HOC (Higher-Order Component)
+    - 컴포넌트를 개발하는 하나의 패턴. 컴포넌트의 로직을 재활용 할 때 유용하다.
+    - 현재는 구현할 일이 없다. (대부분의 경우가 Hook으로 대체 가능)

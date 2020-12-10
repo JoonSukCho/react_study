@@ -1,15 +1,20 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Counter from "../components/Counter";
 import { increase, decrease, setDiff } from "../modules/counter";
 
 const CounterContainer = () => {
   // useSelector는 리덕스 스토어의 상태를 조회하는 Hook.
   // state의 값은 store.getState() 와 동일
-  const { number, diff } = useSelector((state) => ({
-    number: state.counter.number,
-    diff: state.counter.diff,
-  }));
+  const { number, diff } = useSelector(
+    (state) => ({
+      number: state.counter.number,
+      diff: state.counter.diff,
+    }),
+    shallowEqual
+  );
+  // const number = useSelector((state) => state.counter.number);
+  // const diff = useSelector((state) => state.counter.diff);
 
   // useDispatch 는 리덕스 스토어의 dispatch를 함수에서 사용할 수 있게 해주는 Hook
   const dispatch = useDispatch();
