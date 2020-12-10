@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, NavLink } from "react-router-dom";
 import {
   Button,
   Card,
@@ -62,12 +62,12 @@ const Logs = () => {
           <CardContent className={classes.contents}>
             <Grid container direction="row" alignItems="center" spacing={2}>
               <Grid item>
-                <Link to="/logDetail">
+                <NavLink to="/logDetail">
                   <Pageview
                     className={classes.pointer}
                     fontSize="large"
                   ></Pageview>
-                </Link>
+                </NavLink>
               </Grid>
               <Grid item>View Data</Grid>
               <Grid item>
