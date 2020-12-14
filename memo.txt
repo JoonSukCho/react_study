@@ -261,3 +261,13 @@
 
 // json-server
     - json 파일 하나로 연습용 서버를 쉽게 구성할 수 있음.
+
+
+// Webpack DevServer Proxy
+    - 웹팩 개발서버의 프록시를 사용하면, 백엔드에서 CORS 세팅을 따로 안해줘도 된다?
+    
+
+// redux-saga
+    - redux-thunk로 하지 못하는 비동기 작업들을 처리 할 수 있다.
+    Generator 문법 사용
+        - function* Generator() { yield 1; };
