@@ -271,3 +271,12 @@
     - redux-thunk로 하지 못하는 비동기 작업들을 처리 할 수 있다.
     Generator 문법 사용
         - function* Generator() { yield 1; };
+    - put
+        - 특정 액션을 dispatch 해줌
+    - call
+        - 특정 함수를 호출하고, 결과물이 return 될 때 까지 기다려줌
+        - 호출하는 함수에 넣고싶은 인자는 call 함수의 두번째 인자부터 차례대로 넣는다.
+    - takeEvery
+        - 특정 액션 타입에 대해 dispatch 되는 모든 액션들을 처리하는 것
+    - takeLatest
+        - 특정 액션 타입에 대해 dispatch 된 가장 마지막 액션만 처리

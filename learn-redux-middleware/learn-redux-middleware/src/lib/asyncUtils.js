@@ -1,16 +1,31 @@
+import { call, put } from "redux-saga/effects";
+
 // Promise에 기반한 Thunk를 만들어주는 함수
-export const createPromiseThunk = (type, promiseCreator) => {
+export const createPromiseSaga = (type, promiseCreator) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
-  return (param) => async (dispatch) => {
-    // 요청 시작
-    dispatch({ type, param });
-
+  return function* saga(action) {
     try {
-      const payload = await promiseCreator(param);
-      dispatch({ type: SUCCESS, payload });
+      const payload = yield call(promiseCreator, action.payload);
+      yield put({ type: SUCCESS, payload });
     } catch (e) {
-      dispatch({ type: ERROR, payload: e, error: true });
+      yield put({ type: ERROR, error: true, payload: e });
+    }
+  };
+};
+
+// 특정 id의 데이터를 조회하는 용도로 사용하는 사가
+// API를 호출 할 때 파라미터는 action.payload를 넣고,
+// id 값을 action.meta로 설정합니다.
+export const createPromiseSagaById = (type, promiseCreator) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+  return function* saga(action) {
+    const id = action.meta;
+    try {
+      const payload = yield call(promiseCreator, action.payload);
+      yield put({ type: SUCCESS, payload, meta: id });
+    } catch (e) {
+      yield put({ type: ERROR, error: e, meta: id });
     }
   };
 };

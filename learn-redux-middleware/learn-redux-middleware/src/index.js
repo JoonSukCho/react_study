@@ -15,7 +15,11 @@ import { createBrowserHistory } from "history";
 import createSagaMiddleware from "redux-saga";
 
 const customHistory = createBrowserHistory();
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware({
+  context: {
+    history: customHistory,
+  },
+});
 
 // 여러개의 미들웨어 적용 가능
 // logger를 사용할 경우, logger가 applyMiddleware의 인자 마지막에 있어야한다.
@@ -26,8 +30,8 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(
       ReduxThunk.withExtraArgument({ history: customHistory }),
-      sagaMiddleware,
-      logger
+      sagaMiddleware
+      // logger
     )
   )
 );
