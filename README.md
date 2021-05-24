@@ -1,6 +1,6 @@
 # react-study
-state 관리
-함수형 컴포넌트
-route
-redux
-styled-components 등
+1. state 관리
+2. 함수형 컴포넌트
+3. route
+4. redux
+5. styled-components 등
